@@ -1,8 +1,24 @@
 "use client";
-import React from "react";
+import React,{useState , useEffect} from "react";
 import Image from "next/image";
 
 const SettingBoxes = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+
+  useEffect(() => {
+    const tokenString = localStorage.getItem('token');
+    if (tokenString) {
+      try {
+        const token = JSON.parse(tokenString);
+        setName(token.username || 'Guest'); // Default value if no username
+        setEmail(token.email || 'No email'); // Default value if no email
+      } catch (error) {
+        console.error('Error parsing token:', error);
+      }
+    }
+  }, [])
+  
   return (
     <>
       <div className="grid grid-cols-5 gap-8">
@@ -52,8 +68,8 @@ const SettingBoxes = () => {
                         type="text"
                         name="fullName"
                         id="fullName"
-                        placeholder="Devid Jhon"
-                        defaultValue="Devid Jhon"
+                        placeholder={name}
+                        defaultValue={name}
                       />
                     </div>
                   </div>
@@ -126,8 +142,8 @@ const SettingBoxes = () => {
                       type="email"
                       name="emailAddress"
                       id="emailAddress"
-                      placeholder="devidjond45@gmail.com"
-                      defaultValue="devidjond45@gmail.com"
+                      placeholder={email}
+                      defaultValue={email}
                     />
                   </div>
                 </div>
@@ -168,8 +184,8 @@ const SettingBoxes = () => {
                       type="text"
                       name="Username"
                       id="Username"
-                      placeholder="devidjhon24"
-                      defaultValue="devidjhon24"
+                      placeholder={name + "12"}
+                      defaultValue={name + "12"}
                     />
                   </div>
                 </div>
@@ -242,13 +258,7 @@ const SettingBoxes = () => {
                 <div className="mb-4 flex items-center gap-3">
                   <div className="h-14 w-14 rounded-full">
                     <>
-                      <Image
-                        src="/images/user/user-03.png"
-                        width={55}
-                        height={55}
-                        alt="User"
-                        className="overflow-hidden rounded-full"
-                      />
+                      
                     </>
                   </div>
                   <div>

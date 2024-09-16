@@ -70,7 +70,7 @@ const menuGroups = [
 
         ),
         label: "Irrigation Analysis",
-        route: "/irrgation",
+        route: "/irrigation",
       },
       {
         icon: (

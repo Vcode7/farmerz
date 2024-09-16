@@ -1,28 +1,31 @@
 import React from "react";
 import { dataStats } from "@/types/dataStats";
 
-const dataStatsList = [
-  {
-    color: "#3FD97F",
-    title: "Soil Moisture",
-    value: "45",
-    growthRate: 0.43,
-  },
-  {
-    color: "#FF9C55",
-    title: "Power usage",
-    value: "20W",
-    growthRate: 4.35,
-  },
-  {
-    color: "#8155FF",
-    title: "Weather",
-    value: "20",
-    growthRate: 2.59,
-  },
-];
 
 const DataStatsOne: React.FC<dataStats> = () => {
+ 
+
+  const dataStatsList = [
+    {
+      color: "#3FD97F",
+      title: 30,
+      value: "45",
+      growthRate: 0.43,
+    },
+    {
+      color: "#FF9C55",
+      title: "Power usage",
+      value: "20W",
+      growthRate: 4.35,
+    },
+    {
+      color: "#8155FF",
+      title: "Weather",
+      value: "20",
+      growthRate: 2.59,
+    },
+  ];
+  
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
