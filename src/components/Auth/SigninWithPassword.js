@@ -28,7 +28,6 @@ export default function SigninWithPassword() {
       
       const result = await response.json();
 
-      console.log(result)
       if (result.login) {
         localStorage.setItem("token", result.token); // Store token (or relevant data) in localStorage
         router.push('/about')
@@ -36,7 +35,6 @@ export default function SigninWithPassword() {
         setError(result.message || "Login failed.");
       }
     } catch (error) {
-      console.log(error)
       setError("An error occurred while logging in.");
     }
   };

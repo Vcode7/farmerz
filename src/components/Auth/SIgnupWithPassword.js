@@ -28,7 +28,6 @@ export default function SignupWithPassword() {
 
       const result = await response.json();
 
-      console.log(result)
       if (result.login) {
         
         setError("succes");

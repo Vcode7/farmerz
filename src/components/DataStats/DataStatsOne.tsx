@@ -17,10 +17,8 @@ const DataStatsOne: React.FC<dataStats> = () => {
         });
         const result = await response.json();
         setValue(result.data.value);
-        console.log(result);
       } catch (e) {
         setValue(0);
-        console.log(e);
       }
     };
 

@@ -3,7 +3,6 @@ import connectDB from '../../../../middelwear/dbconnect';
 
 // var CryptoJS = require("crypto-js")
 import { NextResponse } from 'next/server';
-import { Console } from 'console';
 // Handle POST requests
 export async function POST(req) {
   await connectDB()
@@ -32,7 +31,6 @@ export async function POST(req) {
 
   // Check if the decrypted password matches the provided password
   if (user.Password === password) {
-    console.log('loging')
     // Generate JWT token
     var token = { "username": user.UserName,"email":user.Email, "id": user._id };  
     var token =JSON.stringify({

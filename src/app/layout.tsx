@@ -22,7 +22,6 @@ export default function RootLayout({
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
     var token = localStorage.token; 
-        console.log(token)
         if(!token){
             router.push('/auth/signin')
       }
