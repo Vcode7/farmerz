@@ -2,26 +2,23 @@
 import React,{useState , useEffect} from "react";
 import Image from "next/image";
 
+import useLocalStorage from "../../hooks/useLocalStorage";
 const SettingBoxes = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
+  const [token, setToken] = useLocalStorage('token','')
   useEffect(() => {
-    let tokenString = '';
-
-    if (typeof window !== 'undefined') {
-      let tokenString = localStorage.getItem('token');
-    }
-    if (tokenString) {
+    if (token) {
       try {
-        const token = JSON.parse(tokenString);
-        setName(token.username || 'Guest'); // Default value if no username
-        setEmail(token.email || 'No email'); // Default value if no email
+        const tokens = JSON.parse(token);
+        setName(tokens.username || 'Guest'); // Default value if no username
+        setEmail(tokens.email || 'No email'); // Default value if no email
       } catch (error) {
         console.error('Error parsing token:', error);
       }
     }
-  }, [])
+  }, [token])
   
   return (
     <>
