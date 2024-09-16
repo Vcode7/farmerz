@@ -11,16 +11,17 @@ const SignUp: React.FC = () => {
   return (
     <>
    
-    <div className="mb-3 mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <h2 className="text-[26px] relative text-center w-3/4 font-bold leading-[30px] text-dark dark:text-white">
-        SING UP
-      </h2>
-<div>
+   <div className="mb-5 mt-3 flex flex-row gap-3 sm:items-center justify-between">
+        <div className="w-1 h-1"></div>
+        <div className="text-[26px] mt-2 text-center font-bold leading-[30px] text-dark dark:text-white">
+          SING IN
+        </div>
+        <ul>
 
-      <DarkModeSwitcher />
-</div>
+          <DarkModeSwitcher />
+        </ul>
+      </div>
 
-    </div>
 
       <div className="rounded-[10px] w-3/4 m-auto bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
         <div className="flex flex-wrap items-center">

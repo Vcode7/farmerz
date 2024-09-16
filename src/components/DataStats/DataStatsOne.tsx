@@ -1,15 +1,39 @@
-import React from "react";
+
+import React,{useState, useEffect} from "react";
 import { dataStats } from "@/types/dataStats";
 
 
 const DataStatsOne: React.FC<dataStats> = () => {
- 
+  const [value, setValue] = useState(0)
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/moisture", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const result = await response.json();
+        setValue(result.data.value);
+        console.log(result);
+      } catch (e) {
+        setValue(0);
+        console.log(e);
+      }
+    };
+
+    const intervalId = setInterval(fetchData, 2000);
+    return () => clearInterval(intervalId);
+  }, []);
+  
 
   const dataStatsList = [
     {
       color: "#3FD97F",
-      title: 30,
-      value: "45",
+      title: "Moisture",
+      value: value,
       growthRate: 0.43,
     },
     {

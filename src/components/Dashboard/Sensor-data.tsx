@@ -5,7 +5,7 @@ import ChartTwo from "../Charts/ChartTwo";
 import DataStatsOne from "@/components/DataStats/DataStatsOne";
 import ChartOne from "@/components/Charts/ChartOne";
 
-const ECommerce: React.FC = () => {
+const Data: React.FC = () => {
   return (
     <>
       <DataStatsOne />
@@ -19,4 +19,4 @@ const ECommerce: React.FC = () => {
   );
 };
 
-export default ECommerce;
+export default Data;
