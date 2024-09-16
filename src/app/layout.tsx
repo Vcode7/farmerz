@@ -25,7 +25,7 @@ export default function RootLayout({
         if(!token){
             router.push('/auth/signin')
       }
-  }, []);
+  }, [router]);
 
   return (
     <html lang="en">
