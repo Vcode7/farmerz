@@ -1,5 +1,7 @@
-"use client";
+'use client';
 import React, { useState } from "react";
+
+import { useRouter } from "next/navigation";
 
 export default function SigninWithPassword() {
   const [data, setData] = useState({
@@ -8,7 +10,7 @@ export default function SigninWithPassword() {
     remember: false,
   });
   const [error, setError] = useState(null);
-
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,10 +31,12 @@ export default function SigninWithPassword() {
       console.log(result)
       if (result.login) {
         localStorage.setItem("token", result.token); // Store token (or relevant data) in localStorage
+        router.push('/about')
       } else {
         setError(result.message || "Login failed.");
       }
     } catch (error) {
+      console.log(error)
       setError("An error occurred while logging in.");
     }
   };

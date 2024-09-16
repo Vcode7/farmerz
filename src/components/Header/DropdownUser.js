@@ -1,10 +1,27 @@
-import { useState } from "react";
+
+import { useState , useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@/components/ClickOutside";
 
 const DropdownUser = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const tokenString = localStorage.getItem('token');
+    if (tokenString) {
+      try {
+        const token = JSON.parse(tokenString);
+        setName(token.username || 'Guest'); // Default value if no username
+        setEmail(token.email || 'No email'); // Default value if no email
+      } catch (error) {
+        console.error('Error parsing token:', error);
+      }
+    }
+  }, [])
+  
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -16,11 +33,8 @@ const DropdownUser = () => {
         <svg className="h-12 w-12 rounded-full text-dark-2 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
 </svg>
-
-
-
         <span className="flex items-center gap-2 font-medium text-dark dark:text-dark-6">
-          <span className="hidden lg:block">USER NAME</span>
+          <span className="hidden lg:block">{name}</span>
 
           <svg
             className={`fill-current duration-200 ease-in ${dropdownOpen && "rotate-180"}`}
@@ -56,10 +70,10 @@ const DropdownUser = () => {
 
             <span className="block">
               <span className="block font-medium text-dark dark:text-white">
-                user
+                {name}
               </span>
               <span className="block font-medium text-dark-5 dark:text-dark-6">
-                user@gmail.com
+                {email}
               </span>
             </span>
           </div>

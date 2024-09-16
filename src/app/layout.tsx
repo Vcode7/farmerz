@@ -3,6 +3,8 @@ import "jsvectormap/dist/css/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "@/css/satoshi.css";
 import "@/css/style.css";
+
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Loader from "@/components/common/Loader";
 
@@ -14,10 +16,16 @@ export default function RootLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const router = useRouter()
   // const pathname = usePathname();
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
+    var token = localStorage.token; 
+        console.log(token)
+        if(!token){
+            router.push('/auth/signin')
+      }
   }, []);
 
   return (
