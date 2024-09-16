@@ -7,7 +7,11 @@ const SettingBoxes = () => {
   const [email, setEmail] = useState('')
 
   useEffect(() => {
-    const tokenString = localStorage.getItem('token');
+    let tokenString = '';
+
+    if (typeof window !== 'undefined') {
+      let tokenString = localStorage.getItem('token');
+    }
     if (tokenString) {
       try {
         const token = JSON.parse(tokenString);

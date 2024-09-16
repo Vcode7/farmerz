@@ -29,7 +29,9 @@ export default function SigninWithPassword() {
       const result = await response.json();
 
       if (result.login) {
-        localStorage.setItem("token", result.token); // Store token (or relevant data) in localStorage
+        if (typeof window !== 'undefined') {
+          localStorage.setItem("token", result.token);
+        }
         router.push('/about')
       } else {
         setError(result.message || "Login failed.");

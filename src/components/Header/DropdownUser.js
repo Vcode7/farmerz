@@ -10,7 +10,9 @@ const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
-    const tokenString = localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      const tokenString = localStorage.getItem('token');
+    }
     if (tokenString) {
       try {
         const token = JSON.parse(tokenString);
