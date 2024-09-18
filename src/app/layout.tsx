@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Loader from "@/components/common/Loader";
 
-import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function RootLayout({
   children,
@@ -18,15 +17,13 @@ export default function RootLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter()
-  // const pathname = usePathname();
-  const [token, setToken] = useLocalStorage("token",'');
   
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
-        if(!token){
+        if(!localStorage.token){
             router.push('/auth/signin')
       }
-  }, [router,token]);
+  }, [router]);
 
   return (
     <html lang="en">

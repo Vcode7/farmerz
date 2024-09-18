@@ -69,7 +69,7 @@ const menuGroups = [
           </svg>
 
         ),
-        label: "Irrigation Analysis",
+        label: "Irrigation",
         route: "/irrigation",
       },
       {
