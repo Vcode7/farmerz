@@ -3,10 +3,8 @@ import React,{useState, useEffect} from "react";
 import { dataStats } from "@/types/dataStats";
 
 
-const DataStatsOne: React.FC<dataStats> = () => {
+const DataMoisture = () => {
   const [value, setValue] = useState(0)
-  const [weather, setweather] = useState('')
-  const [location, setLocation] = useState('')
   
   useEffect(() => {
     const fetchData = async () => {
@@ -24,28 +22,12 @@ const DataStatsOne: React.FC<dataStats> = () => {
         setValue(0);
       }
     };
-    const fetchWeather = async () => {
-      try {
-        const w_response = await fetch("http://api.weatherapi.com/v1/current.json?key=2aaa30a1945a47bfae551821241809&q=bengaluru&aqi=no", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const w_result = await w_response.json();
-        setweather(w_result.current.temp_c);
-        setLocation(w_result.location.name+' '+w_result.location.region)
-      } catch (e) {
-        setweather('not found');
-      }
-    };
+    
     fetchData()
-    fetchWeather()
     const intervalId = setInterval(fetchData, 10000);
-    const interweather = setInterval(fetchWeather, 100000);
     return () => {
       clearInterval(intervalId);
-      clearInterval(interweather);
+
     }
   }, []);
   
@@ -53,23 +35,28 @@ const DataStatsOne: React.FC<dataStats> = () => {
   const dataStatsList = [
     {
       color: "#3FD97F",
-      title: "Moisture",
+      title: "Moisture 1",
       value: value,
       recent: '12:01',
     },
     {
-      color: "#FF9C55",
-      title: "Power usage",
-      value: "20W",
-      recent: "12:00",
-    },
-    {
-      color: "#8155FF",
-      title: "Weather",
-      value: weather,
-      recent: '',
-      location: location,
-    },
+        color: "#3FD97F",
+        title: "Moisture 2",
+        value: value,
+        recent: '12:01',
+      },
+      {
+        color: "#3FD97F",
+        title: "Moisture 3",
+        value: value,
+        recent: '12:01',
+      },
+      {
+        color: "#3FD97F",
+        title: "Moisture 4",
+        value: value,
+        recent: '12:01',
+      }
   ];
   
   return (
@@ -95,24 +82,12 @@ const DataStatsOne: React.FC<dataStats> = () => {
                 </h4>
                 
                 <span className="text-body-sm font-large">
-                {item.recent == '' ? (
-                  'location'
-                ) : (
-                 
-                  'last reading at'
-                  
-                )}
+                  last reading at
                 </span>
               </div>
               
               <span className="flex items-center gap-1.5 text-body-sm font-medium text-green" >
-                {item.recent == '' ? (
-                  item.location
-                ) : (
-                 
-                  item.recent
-                  
-                )}
+                {item.recent}
               </span>
             </div>
           </div>
@@ -122,4 +97,4 @@ const DataStatsOne: React.FC<dataStats> = () => {
   );
 };
 
-export default DataStatsOne;
+export default DataMoisture;

@@ -20,12 +20,7 @@ const About = () => {
                 About Us
               </h4>
               <p className="mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque posuere fermentum urna, eu condimentum mauris
-                tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus
-                ultricies. Sed vel aliquet libero. Nunc a augue fermentum,
-                pharetra ligula sed, aliquam lacus.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere animi quibusdam, fugiat quas perferendis quis dolor molestias alias tenetur ad fugit sit sint itaque exercitationem et sed asperiores pariatur, totam quo atque accusamus ipsam! Natus non minus delectus in earum quibusdam praesentium dolores enim quos cum, sunt quisquam ab quidem. Blanditiis vero fugit asperiores quod?
+              FarmTech is an innovative team dedicated to revolutionizing agriculture through technology. Our mission is to develop smart, sustainable solutions for modern farming challenges. By integrating advanced technologies into one unified app, we empower farmers with tools for efficient irrigation management, biofuel utilization, solar power solutions, and more. Our platform ensures real-time monitoring, resource optimization, and eco-friendly practices to increase productivity and sustainability. With a focus on making agriculture smarter, greener, and more accessible, FarmTech aims to bridge the gap between traditional farming and future-ready tech solutions.
               </p>
             </div>
 

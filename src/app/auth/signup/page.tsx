@@ -14,7 +14,7 @@ const SignUp: React.FC = () => {
    <div className="mb-5 mt-3 flex flex-row gap-3 sm:items-center justify-between">
         <div className="w-1 h-1"></div>
         <div className="text-[26px] mt-2 text-center font-bold leading-[30px] text-dark dark:text-white">
-          SING IN
+          SIGN UP
         </div>
         <ul>
 

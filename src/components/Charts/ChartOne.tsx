@@ -8,11 +8,11 @@ const ChartOne: React.FC = () => {
   const series = [
     {
       name: "Enery used",
-      data: [0, 20, 35, 45, 35, 55, 65, 50, 65, 75, 60, 75],
+      data: [ 56, 45, 65, 60, 75, 55, 65, 50, 65, 75, 60, 75,60],
     },
     {
       name: "Enery saved",
-      data: [15, 9, 17, 32, 25, 68, 80, 68, 84, 94, 74, 62],
+      data: [15, 9, 17, 14, 19, 17, 3, 9, 7, 15, 9, 17, 13],
     },
   ];
 
@@ -138,7 +138,7 @@ const ChartOne: React.FC = () => {
         </div>
         <div className="flex items-center gap-2.5">
           <p className="font-medium uppercase text-dark dark:text-dark-6">
-            Short by:
+            Sort by:
           </p>
           <DefaultSelectOption options={["Monthly", "Yearly"]} />
         </div>

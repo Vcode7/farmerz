@@ -1,7 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+
+import useLocalStorage from "../../hooks/useLocalStorage";
+
 export default function SignupWithPassword() {
+  
+  const [token, setToken] = useLocalStorage('token','')
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -9,7 +14,7 @@ export default function SignupWithPassword() {
     remember: false,
   });
   const [error, setError] = useState(null);
-
+  const router = useRouter()
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,8 +35,8 @@ export default function SignupWithPassword() {
 
       if (result.login) {
         
-        setError("succes");
-        redirect('/')
+        setToken(result.token)
+        router.push('/about')
 
       } else {
         setError(result.message || "Login failed.");
