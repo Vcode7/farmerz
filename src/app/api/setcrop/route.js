@@ -36,13 +36,12 @@ export async function POST(req) {
     }
 
     // Find the crop and update or create if it doesn't exist
-    const updatedCrop = await Crop.findOneAndUpdate(
-      { crop },
-      { moisture },
-      { new: true, upsert: true }  // Create a new crop if it doesn't exist
-    );
+    await Crop.deleteMany({});
 
-    return NextResponse.json({ success: true, data: updatedCrop }, { status: 201 });
+    // Insert the new crop data
+    const newCrop = await Crop.create({ crop, moisture });
+
+    return NextResponse.json({ success: true, data: newCrop }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
   }

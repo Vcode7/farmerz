@@ -2,7 +2,7 @@
 import React from "react";
 import ChartThree from "../Charts/ChartThree";
 import ChartTwo from "../Charts/ChartTwo";
-import DataStatsOne from "@/components/DataStats/DataStatsOne";
+import DataStatsOne from "@/components/DataStats/DataStatsOne.js";
 import ChartOne from "@/components/Charts/ChartOne";
 
 const Data: React.FC = () => {

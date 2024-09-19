@@ -20,6 +20,10 @@
  *
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+.roboto-mono-234 {
+    font-family: "Roboto Mono", monospace;
+  }
 @font-face {
     font-family: "Satoshi";
     src: url("../fonts/Satoshi-Light.woff2") format("woff2"),

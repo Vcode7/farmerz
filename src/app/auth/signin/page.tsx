@@ -31,8 +31,8 @@ const SignIn: React.FC = () => {
 
           <div className="hidden w-full p-7.5 xl:block xl:w-1/2">
             <div className="custom-gradient-1 overflow-hidden rounded-2xl px-12.5 pt-12.5 dark:!bg-dark-2 dark:bg-none">
-              <div className="mb-10 text-2xl font-bold text-dark dark:text-white sm:text-heading-3">
-                FARM TECH
+              <div className="roboto-mono-234 mb-10 text-2xl font-bold text-dark dark:text-white sm:text-heading-3">
+                I²
               </div>
               <p className="mb-3 text-xl font-medium text-dark dark:text-white">
                 Sign in to your account

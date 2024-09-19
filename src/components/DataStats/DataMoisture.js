@@ -5,9 +5,26 @@ import { dataStats } from "@/types/dataStats";
 
 const DataMoisture = () => {
   const [value, setValue] = useState(0)
+  const [oxy, setOxy] = useState(0)
+  const [time, setTime] = useState(Date.now())
   
   useEffect(() => {
+    function format(dateString) {
+      // Create a Date object from the input date string
+      const date = new Date(dateString);
+      
+      // Define options to format the time in 24-hour format (IST)
+      const options = {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // 24-hour format
+        timeZone: 'Asia/Kolkata' // Set the time zone to IST
+      };
+      
+      return date.toLocaleTimeString('en-US', options);
+    }
     const fetchData = async () => {
+     
       try {
         const response = await fetch("/api/moisture", {
           method: "GET",
@@ -16,8 +33,14 @@ const DataMoisture = () => {
           },
         });
         const result = await response.json();
-        setValue(result.data.value);
-        
+        console.log(result)
+        const newValue = parseFloat(result.data.value) < 0 ? '0' : result.data.value;
+        setValue(newValue);
+        console.log(result.data.time)
+        setTime(format(result.data.time));
+
+        let val =  ((0.5-(value/100))*21).toFixed(2);
+        setOxy(val)
       } catch (e) {
         setValue(0);
       }
@@ -29,7 +52,7 @@ const DataMoisture = () => {
       clearInterval(intervalId);
 
     }
-  }, []);
+  }, [value]);
   
 
   const dataStatsList = [
@@ -37,25 +60,29 @@ const DataMoisture = () => {
       color: "#3FD97F",
       title: "Moisture 1",
       value: value,
-      recent: '12:01',
+      Oxygen : oxy,
+      recent: time,
     },
     {
         color: "#3FD97F",
         title: "Moisture 2",
         value: value,
-        recent: '12:01',
+        Oxygen : oxy,
+        recent: time,
       },
       {
         color: "#3FD97F",
         title: "Moisture 3",
         value: value,
-        recent: '12:01',
+        Oxygen : oxy,
+        recent: time,
       },
       {
         color: "#3FD97F",
         title: "Moisture 4",
         value: value,
-        recent: '12:01',
+        Oxygen : oxy,
+        recent: time,
       }
   ];
   
@@ -77,8 +104,11 @@ const DataMoisture = () => {
             
             <div className="mt-6 flex items-end justify-between">
               <div>
-                <h4 className="mb-1.5 text-heading-6 font-bold text-dark dark:text-white">
+              <h4 className="mb-1.5 text-heading-6 font-bold text-dark dark:text-white">
                   {item.value}
+                </h4>
+                <h4 className="mb-1.5 text-sm font-bold text-dark dark:text-white">
+                  OXYGEN LEVEL : {item.Oxygen}%
                 </h4>
                 
                 <span className="text-body-sm font-large">

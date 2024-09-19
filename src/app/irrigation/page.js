@@ -1,8 +1,7 @@
 'use client';
 import React,{useState,useEffect} from 'react'
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import DataMoisture from '@/components/DataStats/DataMoisture';
-import ButtonDefault from "../../components/Buttons/ButtonDefault";
+import DataMoisture from '@/components/DataStats/DataMoisture.js';
 import SetCrop from "../../components/setcrop";
 
 const Irrigation = () => {

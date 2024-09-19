@@ -3,10 +3,12 @@ import React,{useState, useEffect} from "react";
 import { dataStats } from "@/types/dataStats";
 
 
-const DataStatsOne: React.FC<dataStats> = () => {
+const DataStatsOne = () => {
   const [value, setValue] = useState(0)
   const [weather, setweather] = useState('')
   const [location, setLocation] = useState('')
+  
+  const [time, setTime] = useState('')
   
   useEffect(() => {
     const fetchData = async () => {
@@ -18,12 +20,29 @@ const DataStatsOne: React.FC<dataStats> = () => {
           },
         });
         const result = await response.json();
-        setValue(result.data.value);
+        const newValue = parseFloat(result.data.value) < 0 ? '0' : result.data.value;
+        setValue(newValue);
         
+        setTime(format(result.data.time));
       } catch (e) {
         setValue(0);
       }
     };
+    function format(dateString) {
+      // Create a Date object from the input date string
+      const date = new Date(dateString);
+      
+      // Define options to format the time in 24-hour format (IST)
+      const options = {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // 24-hour format
+        timeZone: 'Asia/Kolkata' // Set the time zone to IST
+      };
+      
+      return date.toLocaleTimeString('en-US', options);
+    }
+
     const fetchWeather = async () => {
       try {
         const w_response = await fetch("http://api.weatherapi.com/v1/current.json?key=2aaa30a1945a47bfae551821241809&q=bengaluru&aqi=no", {
@@ -34,14 +53,14 @@ const DataStatsOne: React.FC<dataStats> = () => {
         });
         const w_result = await w_response.json();
         setweather(w_result.current.temp_c);
-        setLocation(w_result.location.name+' '+w_result.location.region)
+        setLocation(w_result.location.name+','+w_result.location.region)
       } catch (e) {
         setweather('not found');
       }
     };
     fetchData()
     fetchWeather()
-    const intervalId = setInterval(fetchData, 10000);
+    const intervalId = setInterval(fetchData, 1000);
     const interweather = setInterval(fetchWeather, 100000);
     return () => {
       clearInterval(intervalId);
@@ -55,11 +74,11 @@ const DataStatsOne: React.FC<dataStats> = () => {
       color: "#3FD97F",
       title: "Moisture",
       value: value,
-      recent: '12:01',
+      recent: time,
     },
     {
       color: "#FF9C55",
-      title: "Power usage",
+      title: "Solar Power usage",
       value: "20W",
       recent: "12:00",
     },

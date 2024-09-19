@@ -113,8 +113,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       >
         {/* <!-- SIDEBAR HEADER --> */}
         <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 xl:py-10">
-          <Link href="/" className="text-heading-6 font-bold text-dark-2 dark:text-white ">
-            FARM TECH
+          <Link href="/" className="roboto-mono-234 text-heading-6 font-bold text-dark-2 dark:text-white ">
+            I²
           </Link>
 
           <button
